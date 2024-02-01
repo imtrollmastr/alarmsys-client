@@ -4,11 +4,10 @@ enum RadioMessage {
 function callProcessingSystem () {
     basic.showString("Alert has been sent to your teacher.")
     radio.sendString(clientname)
-    music.setVolume(255)
-    music._playDefaultBackground(music.builtInPlayableMelody(Melodies.Ringtone), music.PlaybackMode.InBackground)
     savedNumber += 1
     datalogger.log(datalogger.createCV(clientname, savedNumber))
     LEDStrip.showColor(neopixel.colors(NeoPixelColors.Red))
+    LEDStrip.show()
 }
 input.onButtonPressed(Button.AB, function () {
     basic.showLeds(`
