@@ -1,14 +1,12 @@
 enum RadioMessage {
     message1 = 49434
 }
-function callProcessingSystem () {
+input.onSound(DetectedSound.Loud, function () {
     basic.showString("Alert has been sent to your teacher.")
-    radio.sendString(clientname)
     savedNumber += 1
     datalogger.log(datalogger.createCV(clientname, savedNumber))
-    LEDStrip.showColor(neopixel.colors(NeoPixelColors.Red))
-    LEDStrip.show()
-}
+    strip.showColor(neopixel.colors(NeoPixelColors.Red))
+})
 input.onButtonPressed(Button.AB, function () {
     basic.showLeds(`
         . . . . .
@@ -17,19 +15,15 @@ input.onButtonPressed(Button.AB, function () {
         # . # . .
         . # . . .
         `)
-    LEDStrip.showColor(neopixel.colors(NeoPixelColors.White))
-    music.stopAllSounds()
+    strip.showColor(neopixel.colors(NeoPixelColors.White))
+    basic.pause(20000)
+    basic.clearScreen()
 })
-let LEDStrip: neopixel.Strip = null
+let strip: neopixel.Strip = null
 let savedNumber = 0
 let clientname = ""
 clientname = "user_3019011"
 savedNumber = 0
-LEDStrip = neopixel.create(DigitalPin.P0, 10, NeoPixelMode.RGB)
-radio.setGroup(173)
-LEDStrip.showColor(neopixel.colors(NeoPixelColors.White))
-basic.forever(function () {
-    if (input.soundLevel() == 255) {
-        callProcessingSystem()
-    }
-})
+strip = neopixel.create(DigitalPin.P0, 10, NeoPixelMode.RGB)
+strip.showColor(neopixel.colors(NeoPixelColors.White))
+strip.showBarGraph(input.soundLevel(), 200)

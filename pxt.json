@@ -9,7 +9,10 @@
         "audio-recording": "*",
         "servo": "*",
         "datalogger": "*",
-        "neopixel": "github:microsoft/pxt-neopixel#v0.7.5"
+        "neopixel": "github:microsoft/pxt-neopixel#v0.7.5",
+        "ContinuousServo": "github:tinkertanker/pxt-continuous-servo#v0.0.6",
+        "pxt-esp8266_thingspeak": "github:alankrantas/pxt-esp8266_thingspeak#v0.0.3",
+        "microIoT": "github:dfrobot/pxt-dfrobot-microiot#v1.3.0"
     },
     "files": [
         "main.blocks",
